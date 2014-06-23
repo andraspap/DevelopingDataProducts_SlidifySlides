@@ -1,0 +1,56 @@
+---
+title       : Milage Predictor Based on Car Characteristics
+subtitle    : 
+author      : Andras Pap 
+job         : Coursera Student for Developing Data Products
+logo        : AP_Logo4.png
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+---
+
+## My Shiny App: Milage Predictor
+
+It helps you predict the milage of any car based on engine size, horse power, weight or 1/4 mile time.
+
+You can find my useful Shiny data product at: https://andraspap.shinyapps.io/Assignment/
+
+Give it a try!!
+
+--- .class #id 
+
+## Prediction Is Based on the "mtcars" Data Set
+The first 15 of the 32 cars in the data set:
+```{r echo=FALSE}
+data(mtcars)
+head(mtcars,15)
+```
+
+--- .class #id 
+
+## Clear Graphs Show the Result
+
+```{r echo=FALSE, cache=TRUE}
+lmBoth <- lm(mpg ~ disp + am + disp * am, mtcars)
+
+plot(mpg ~ disp,mtcars,col = (mtcars$am == 0)*2 + 2, main = "MPG v.s. Displacement", ylab = "mpg", xlab = "Displacement (cu in.)")
+abline(c(lmBoth$coef[1],lmBoth$coef[2]),col='blue')		
+abline(c(lmBoth$coef[1] + lmBoth$coef[3],lmBoth$coef[2] + lmBoth$coef[4]),col='red')
+legend("topright",lty = 1, seg.len = 2, xjust = 20, col=c("blue","red"),legend = c("automatic","manual"))
+```
+
+--- .class #id 
+
+## Thank You
+
+
+Thank You for listening to me!
+
+Check out my app: https://andraspap.shinyapps.io/Assignment/
+
+Download it from: https://github.com/andraspap/DevelopingDataProducts_ShinyApp
+
+
+
